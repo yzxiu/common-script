@@ -30,6 +30,7 @@ tar -zxvf "sing-box.tar.gz"
 if [ -f "${SINGBOX_VERSION_NAME}/sing-box" ]; then
     mv "${SINGBOX_VERSION_NAME}/sing-box" /usr/bin/sing-box
     chmod +x /usr/bin/sing-box
+    rm -rf "sing-box.tar.gz" "${SINGBOX_VERSION_NAME}"
 else
     echo "sing-box file not found"
     return 1
