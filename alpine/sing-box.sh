@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e -o pipefail
+set -e -x -o pipefail
 
 apk add ufw vim curl bash
 
@@ -19,8 +19,9 @@ VERSION=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest
     | cut -d ":" -f2 \
     | sed 's/\"//g;s/\,//g;s/\ //g;s/v//')
 
+echo "sing-box version: ${VERSION}"
 
-curl -Lo sing-box.pkg.tar.zst "https://github.com/SagerNet/sing-box/releases/download/v${VERSION}/sing-box-${VERSION}_linux_${ARCH}.tar.gz"
+curl -Lo sing-box.tar.zst "https://github.com/SagerNet/sing-box/releases/download/v${VERSION}/sing-box-${VERSION}_linux_${ARCH}.tar.gz"
 
 
-# 
+# bash <(curl -fsSL https://raw.githubusercontent.com/yzxiu/common-script/refs/heads/main/alpine/sing-box.sh)
