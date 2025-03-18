@@ -2,7 +2,7 @@
 
 set -e -x -o pipefail
 
-apk add ufw vim curl bash
+# apk add ufw vim curl bash
 
 ARCH_RAW=$(uname -m)
 case "${ARCH_RAW}" in
@@ -21,8 +21,19 @@ VERSION=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest
 
 echo "sing-box version: ${VERSION}"
 
-curl -Lo sing-box.tar.gz "https://github.com/SagerNet/sing-box/releases/download/v${VERSION}/sing-box-${VERSION}_linux_${ARCH}.tar.gz"
+SINGBOX_VERSION_NAME="sing-box-${VERSION}-linux-${ARCH}"
 
-tar -zxvf sing-box.tar.gz
+curl -Lo "sing-box.tar.gz" "https://github.com/SagerNet/sing-box/releases/download/v${VERSION}/${SINGBOX_VERSION_NAME}.tar.gz"
 
-# bash <(curl -fsSL https://raw.githubusercontent.com/yzxiu/common-script/refs/heads/main/alpine/sing-box.sh)
+tar -zxvf "sing-box.tar.gz"
+
+if [ -f "${SINGBOX_VERSION_NAME}/sing-box" ]; then
+    mv "${SINGBOX_VERSION_NAME}/sing-box" /usr/bin/sing-box
+    chmod +x /usr/bin/sing-box
+else
+    echo "sing-box file not found"
+    return 1
+fi
+
+
+# bash <(curl -fsSL https://raw.githubusercontent.com/yzxiu/common-script/refs/heads/main/sing-box.sh)
