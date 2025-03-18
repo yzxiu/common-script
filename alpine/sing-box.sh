@@ -21,7 +21,8 @@ VERSION=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest
 
 echo "sing-box version: ${VERSION}"
 
-curl -Lo sing-box.tar.zst "https://github.com/SagerNet/sing-box/releases/download/v${VERSION}/sing-box-${VERSION}_linux_${ARCH}.tar.gz"
+curl -Lo sing-box.tar.gz "https://github.com/SagerNet/sing-box/releases/download/v${VERSION}/sing-box-${VERSION}_linux_${ARCH}.tar.gz"
 
+tar -zxvf sing-box.tar.gz
 
 # bash <(curl -fsSL https://raw.githubusercontent.com/yzxiu/common-script/refs/heads/main/alpine/sing-box.sh)
