@@ -19,7 +19,7 @@ VERSION=$(curl -s https://api.github.com/repos/slackhq/nebula/releases/latest \
     | cut -d ":" -f2 \
     | sed 's/\"//g;s/\,//g;s/\ //g;s/v//')
 
-echo "sing-box version: ${VERSION}"
+echo "nebula version: ${VERSION}"
 
 NEBULA_VERSION_NAME="nebula-linux-${ARCH}"
 
