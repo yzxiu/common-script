@@ -38,3 +38,4 @@ fi
 
 
 # bash <(curl -fsSL https://raw.githubusercontent.com/yzxiu/common-script/refs/heads/main/sing-box.sh)
+
